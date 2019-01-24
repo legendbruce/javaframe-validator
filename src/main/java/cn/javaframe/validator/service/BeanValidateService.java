@@ -31,8 +31,8 @@ public class BeanValidateService extends AbstractValidateService implements IBea
 		}
 		Class<?> cls = bean.getClass();
 		// 这个对象必须使用 @TargetBean 注解
-		if(checkTargetBean(cls)) {
-			return ValidateResult.SUCCESS;
+		if(!checkTargetBean(cls)) {
+			return ValidateResult.FAIL;
 		}
 		Map<Field, Rules> fieldRuleMap = getRuleMap(cls);
 		for (Map.Entry<Field, Rules> item : fieldRuleMap.entrySet()) {
